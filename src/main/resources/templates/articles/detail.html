@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table tr th{border:1px solid black}
+        table tr td{border:1px solid black}
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>상세보기</h1><br>
+    <a id="home" href="#">홈으로</a>
+    <table class="table">
+        <thead>
+            <tr class="table-active">
+                <th scope="col" style="width: 60%"><%=dto.getBdTitle()%><br>
+                    <%=dto.getBdUserID()%></th>
+                <th scope="col" style="width: 40%" class="text-right">조회 : <%=dto.getBdViewCount()%>
+                    <br> <%=dto.getBdDate()%></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><pre><%=dto.getBdContent()%></pre></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        document.getElementById('home').addEventListener('click',e=>{location.href='/'})
+    </script>
+</body>
+</html>

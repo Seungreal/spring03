@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Home</h1>
+    <a id="write"href="#">새글쓰기</a><br>
+    <a id="list"href="#">글 목록</a><br>
+    <a id="detail"href="#">글 보기</a><br>
+    <a id="update"href="#">글 수정</a> 
+    <script>
+        document.getElementById("write").addEventListener('click',e=>{location.href="/forms/articles/write"})
+        document.getElementById("list").addEventListener('click',e=>{location.href="/forms/articles/list"})
+        document.getElementById("detail").addEventListener('click',e=>{location.href="/forms/articles/detail"})
+        document.getElementById("update").addEventListener('click',e=>{location.href="/forms/articles/update"})
+    </script>
 </body>
 </html>
