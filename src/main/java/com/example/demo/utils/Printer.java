@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class Printer {
-    public void ptc(String str){
+    public void accept(String str){
         Consumer<String> c = System.out::println;
         c.accept(str);
     }

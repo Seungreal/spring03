@@ -16,15 +16,20 @@
     <table class="table">
         <thead>
             <tr class="table-active">
-                <th scope="col" style="width: 60%"><%=dto.getBdTitle()%><br>
-                    <%=dto.getBdUserID()%></th>
-                <th scope="col" style="width: 40%" class="text-right">조회 : <%=dto.getBdViewCount()%>
-                    <br> <%=dto.getBdDate()%></th>
+                <th style="width: 10%">글번호: <span id="artNum">1</span></th>
+                <th style="width: 20%">글쓴이ID: <span id="writerId">1</span></th>
+                <th style="width: 20%">작성일: <span id="writeDate">1</span></th>
+                <th style="width: 10%">조회수: <span id="count">1</span></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td><pre><%=dto.getBdContent()%></pre></td>
+                <td colspan="4" style="width: 100%"><span id="title">테스트</span></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="width: 100%">
+                    <textarea id="content">게시글 테스트</textarea>
+                </td>
             </tr>
         </tbody>
     </table>
