@@ -41,7 +41,7 @@
                 }),
                 dataType:'json',
                 contentType:'application/json',
-                success:d=>{if(d.message==='SUCCESS'){alert('글쓰기 성공!')}
+                success:d=>{if(d.message==='SUCCESS'){alert('글쓰기 성공!'), location.href='/forms/articles/list'}
                             else{alert('글쓰기 실패')}},
                 error:e=>{}
             })
