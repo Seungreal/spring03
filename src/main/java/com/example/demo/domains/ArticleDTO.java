@@ -1,5 +1,6 @@
 package com.example.demo.domains;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import lombok.Data;
@@ -12,7 +13,7 @@ import lombok.Data;
 // 	regDate timestamp default now()
 // );
 
-@Component @Data
+@Component @Data @Lazy
 public class ArticleDTO {
     private int artNum, count;
     private String writerId, title, content, regDate;

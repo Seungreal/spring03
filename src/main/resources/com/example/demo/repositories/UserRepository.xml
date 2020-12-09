@@ -5,4 +5,16 @@
     <insert id="insert" parameterType="com.example.demo.domains.ArticleDTO">
         insert into articles(title,writer_id,content) values(#{title},#{writerId},#{content})
     </insert>
+    <select id="count" resultType="int">
+        select count(*) from articles
+    </select>
+    <select id="selectAll" resultType="com.example.demo.domains.ArticleDTO">
+        select  art_num artNum,
+                writer_id writerId,
+                title,
+                content,
+                reg_date regDate,
+                count
+         from articles
+    </select>
 </mapper>

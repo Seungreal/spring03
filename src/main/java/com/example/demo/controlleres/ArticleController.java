@@ -1,5 +1,6 @@
 package com.example.demo.controlleres;
 
+import java.util.List;
 import java.util.Map;
 
 import com.example.demo.domains.ArticleDTO;
@@ -27,15 +28,21 @@ public class ArticleController {
     public Map<?,?> list(){
         var map = px.hashMap();
         map.put("list", articleService.list());
+        map.put("count", articleService.count());
         return map;
     }
     @GetMapping("/articles/crawling/{site}")
     public Map<?,?> crawling(@PathVariable String site){
         var map = px.hashMap();
-        if(px.equals(site, "bugs")){
-            int count = articleService.crawling("https://music.bugs.co.kr/recomreview?&order=listorder&page=2");
-            map.put("count",count);
-        }
+        var count = articleService.count();
+        if(count==0){
+            switch(site){
+                case "bugs":
+                count = articleService.crawling("https://music.bugs.co.kr/recomreview?&order=listorder&page=2");
+                map.put("count",count);
+                break;
+            }
+        }else{map.put("count", count);}
         return map;
     }
 }

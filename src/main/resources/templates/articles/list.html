@@ -23,17 +23,38 @@
                 <th class="text-center"style="width:10%">조회수</th>
             </tr>
         </thead>
-        <tbody>
-            <td  class="text-center">1</td>
-            <td  class="text-center">테스트</td>
-            <td  class="text-center">홍길동</td>
-            <td  class="text-center">2020-12-01</td>
-            <td  class="text-center">10</td>
+        <tbody id="tb">
+
         </tbody>
     </table>
     <script>
         document.getElementById('home').addEventListener('click',e=>{location.href='/'})
-        $.getJSON('/articles',d=>{})
+        $.getJSON('/articles',d=>{
+            if(d.count != 0){
+                const list = d.list
+                let tr = ''
+                let i = 0
+                for(; i< d.count; i++){
+                    tr += '<tr>'
+                        +'<td class="text-center">'+list[i].artNum+'</td>'
+                        +'<td class="text-center"><a class="title"id="'+list[i].artNum+'"href="#">'+list[i].title+'</a></td>'
+                        +'<td class="text-center">'+list[i].writerId+'</td>'
+                        +'<td class="text-center">'+list[i].regDate+'</td>'
+                        +'<td class="text-center">'+list[i].count+'</td>'
+                        +'</tr>'
+                }
+                $('#tb').html(tr)
+                $('.title').each(function(i){
+                    $(this).click(e=>{
+                        e.preventDefault()
+                        localStorage.setItem('artNum',this.id)
+                        location.href='/forms/articles/detail'
+                    })
+                })
+            }else{
+                alert('조회결과 없음')
+            }
+        })
     </script>
 </body>
 </html>

@@ -2,8 +2,10 @@ package com.example.demo.utils;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
@@ -16,8 +18,8 @@ import org.springframework.stereotype.Component;
 @Component("px")
 public class Proxy {
     public void printer(String t){
-        Consumer<String> f = System.out::println;
-        f.accept(t);;
+        Consumer<String> c = System.out::println;
+        c.accept(t);
     }
     public int integer(String t){
         Function<String,Integer> f= Integer::parseInt;
@@ -42,10 +44,14 @@ public class Proxy {
         Function<Integer,int[]> f = int[]::new;
         return f.apply(size);
     }
+    public List<Object> arrayList(){
+        Supplier<List<Object>> s = ArrayList::new;
+        return s.get();
+    }
     public Map<Object,Object> hashMap(){
         //Map<String,String> map = new HashMap<>();
-        Supplier<Map<Object,Object>> f = HashMap::new;
-        return f.get();
+        Supplier<Map<Object,Object>> s = HashMap::new;
+        return s.get();
     }
     public String message(int i){
         return (i==1)?"SUCCESS":"FAILURE";
