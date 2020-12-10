@@ -28,16 +28,16 @@
         <button type="submit" class="btn btn-secondary mb-3" id="write-btn">작성하기</button>
     </form>
     <script>
-        document.getElementById('home').addEventListener('click',e=>{location.href='/'})
+        $('#home').click(e=>{location.href='/'})
         document.getElementById('write-btn').addEventListener('click',e=>{
             e.preventDefault()
             $.ajax({
                 url:'/articles',
                 type:'POST',
                 data:JSON.stringify({
-                    title:document.getElementById('title').value,
-                    writerId:document.getElementById('writerId').value,
-                    content:document.getElementById('content').value
+                    title:$('#title').val,
+                    writerId:$('#writerId').val,
+                    content:$('#content').val
                 }),
                 dataType:'json',
                 contentType:'application/json',

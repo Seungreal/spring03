@@ -48,7 +48,11 @@
                     $(this).click(e=>{
                         e.preventDefault()
                         localStorage.setItem('artNum',this.id)
-                        location.href='/forms/articles/detail'
+                        $.getJSON(`/articles/${this.id}/count`,d=>{
+                            if(d.message === 'SUCCESS'){
+                                location.href='/forms/articles/detail'
+                            }
+                        })
                     })
                 })
             }else{

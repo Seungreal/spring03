@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Crawler extends Proxy{
-    @Autowired Box<ArticleDTO> artBox;
+    @Autowired MyList<ArticleDTO> artBox;
     @Autowired ArticleDTO article;
-    public Box<ArticleDTO> crawling(String url){
+    public MyList<ArticleDTO> crawling(String url){
         try{
             Document rawData = Jsoup.connect(url).timeout(10*1000).get();
             Elements titles = rawData.select("a[class=albumTitle hyrend]");

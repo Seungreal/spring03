@@ -15,6 +15,5 @@ import lombok.Data;
 
 @Component @Data @Lazy
 public class ArticleDTO {
-    private int artNum, count;
-    private String writerId, title, content, regDate;
+    private String artNum,writerId, title, content, regDate,count;
 }

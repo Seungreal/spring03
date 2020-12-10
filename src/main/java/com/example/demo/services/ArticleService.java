@@ -16,4 +16,12 @@ public interface ArticleService {
 	public int crawling(String url);
 	
 	public int count();
+
+	public ArticleDTO getArticleById(String artNum);
+
+	public int increaseCount(String artNum);
+
+	public int update(ArticleDTO a);
+
+	public int delete(ArticleDTO a);
 }

@@ -8,6 +8,7 @@ import com.example.demo.repositories.ArticleRepository;
 import com.example.demo.services.ArticleService;
 import com.example.demo.utils.Box;
 import com.example.demo.utils.Crawler;
+import com.example.demo.utils.MyList;
 import com.example.demo.utils.UserGenerator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public int crawling(String url) {
-        Box<ArticleDTO> artBox=crawler.crawling(url);
+        MyList<ArticleDTO> artBox=crawler.crawling(url);
+        //Box<ArticleDTO> artBox=crawler.crawling(url);
         for(int i=0;i<artBox.size();i++){
             artBox.get(i).setWriterId(ug.makeuserid());
             write(artBox.get(i));
@@ -42,6 +44,26 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int count() {
         return articleRepository.count();
+    }
+
+    @Override
+    public ArticleDTO getArticleById(String artNum) {
+        return articleRepository.selectById(artNum);
+    }
+
+    @Override
+    public int increaseCount(String artNum) {
+        return articleRepository.updateCount(artNum);
+    }
+
+    @Override
+    public int update(ArticleDTO a) {
+        return articleRepository.update(a);
+    }
+
+    @Override
+    public int delete(ArticleDTO a) {
+        return articleRepository.delete(a);
     }
     
 }

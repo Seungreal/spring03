@@ -14,5 +14,13 @@ public interface ArticleRepository {
 	public int count();
 
 	public List<ArticleDTO> selectAll();
+
+	public ArticleDTO selectById(String artNum);
+
+	public int updateCount(String artNum);
+
+	public int update(ArticleDTO a);
+
+	public int delete(ArticleDTO a);
     
 }
